@@ -1,5 +1,6 @@
 import Irasai.Irasas;
 import Irasai.Irasass;
+import Irasai.PajamuIrasas;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -12,12 +13,12 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Biudzetas b1 = new Biudzetas();
 
-        ArrayList<Irasass> irasas = new ArrayList<>();
+        ArrayList<Irasass> irasuSarasas = new ArrayList<>();
 
 
         System.out.println("-------------Biudžetas----------------");
         meniu();
-        //Naujas irasas
+        //Naujas irasuSarasas
 
 //        - nuskaitytų vartotojo input'ą
 //                - suparsinti vartotojo inputa i objekta
@@ -25,7 +26,14 @@ public class Main {
 //                - nuskaityti faila
 //                - informacija is nuskaityto failo suparsintu i objektus
 //        - pateikti vartotojui turimą informaciją tekstiniu formatu (isprintinti per konsole)
+
+        Irasass pridetiIrasa = new Irasass();
+        irasuSarasas.add(pridetiIrasa);
+
         int meniupasirinkimas = scanner.nextInt();
+
+
+
         switch (meniupasirinkimas) {
             case 1:
                 System.out.println("Pasirinkite kategorija: ");
@@ -34,10 +42,27 @@ public class Main {
                 int inputkat = scanner.nextInt();
                 switch(inputkat){
                     case 1:
-
+                        irasuSarasas.add(naujasPajamuIrasas(scanner));
+                        break;
                 }
         }
+        ArrayList<Irasass> pajamuIrasuIrasas = new ArrayList<>();
+        for(Irasass x : irasuSarasas){
+            if(x instanceof PajamuIrasas){
+                pajamuIrasuIrasas.add(x);
+            }
+        }
+        System.out.println(pajamuIrasuIrasas);
+    }
+    public static Irasass naujasPajamuIrasas(Scanner scanner){
+        PajamuIrasas pajamuIrasas = new PajamuIrasas();
 
+        System.out.println("Suma: ");
+        pajamuIrasas.setSum(scanner.nextDouble());
+        System.out.println("Papildoma informacija:");
+        pajamuIrasas.setPapildomaInfo(scanner.nextLine());
+        pajamuIrasas.setLocalDateTime(LocalDateTime.now());
+        return pajamuIrasas;
     }
 
     public static int meniu() {

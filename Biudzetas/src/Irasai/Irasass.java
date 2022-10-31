@@ -10,11 +10,17 @@ public class Irasass {
     private String papildomaInfo;
 
     public Irasass(long id, double sum, LocalDateTime localDateTime, String papildomaInfo) {
+        this();
         this.id = id;
         this.sum = sum;
         this.localDateTime = localDateTime;
         this.papildomaInfo = papildomaInfo;
     }
+
+    public Irasass() {
+
+    }
+
 
     @Override
     public String toString() {

@@ -10,6 +10,7 @@ public class Irasas {
     private LocalDate data;
     private String papildomaInfo;
 
+
     public Irasas() {
         this.id = counter++;
     }
